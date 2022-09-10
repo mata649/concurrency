@@ -28,10 +28,18 @@ func main() {
 		go worker(i, jobs, results)
 	}
 
-	for _, value := range tasks {
-		jobs <- value
-	}
-	close(jobs)
+	jobs <- 1
+	jobs <- 2
+	jobs <- 3
+	jobs <- 3
+	jobs <- 3
+	jobs <- 3
+	jobs <- 3
+
+	// for _, value := range tasks {
+	// 	jobs <- value
+	// }
+	// close(jobs)
 
 	for i := 0; i < len(tasks); i++ {
 		<-results
